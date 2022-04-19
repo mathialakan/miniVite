@@ -425,7 +425,8 @@ const Comm* localCinfo_ptr = localCinfo.data();
 int size;
 int ndevs = omp_get_num_devices();
 int to_offload = (ndevs > 0);
-#pragma omp target parallel for if (to_offload) \
+//#pragma omp target parallel for if (to_offload) 
+#pragma omp target parallel for \
 reduction(+:le_xx) \
 reduction(+:la2_x) \
 map(tofrom:le_xx, la2_x) \
